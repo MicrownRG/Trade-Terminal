@@ -33,8 +33,15 @@ export default defineNuxtConfig({
         'lightweight-charts-indicators',
         'oakscriptjs',
         'pinets',
+        'astring',
         'grid-layout-plus',
       ],
+    },
+    resolve: {
+      alias: {
+        // Force CJS version of astring so @vibetrader/pinets default import works
+        'astring': 'astring/dist/astring.mjs',
+      },
     },
     build: {
       rollupOptions: {
