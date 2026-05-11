@@ -16,7 +16,6 @@
     "@nuxtjs/color-mode": "^4.0.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@pinia/nuxt": "^0.11.3",
-    "@rollup/rollup-win32-x64-msvc": "^4.60.3",
     "@vibetrader/pinets": "^0.5.4",
     "@vueuse/nuxt": "^14.3.0",
     "grid-layout-plus": "^1.1.1",
@@ -37,5 +36,8 @@
     "@vitest/ui": "^4.1.5",
     "happy-dom": "^20.9.0",
     "vitest": "^4.1.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.60.3"
   }
 }
