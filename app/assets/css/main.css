@@ -1,0 +1,478 @@
+/* assets/css/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════
+   CSS VARIABLES — Berganti otomatis saat dark/light
+   ═══════════════════════════════════════════════════ */
+
+/* ── LIGHT MODE (default) ── */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f6f8fa;
+    --bg-tertiary: #eaeef2;
+    --bg-hover: #f3f4f6;
+
+    --border-color: #d0d7de;
+    --border-subtle: #eaeef2;
+
+    --text-primary: #24292f;
+    --text-secondary: #57606a;
+    --text-muted: #8c959f;
+
+    --chart-bg: #ffffff;
+    --chart-surface: #f6f8fa;
+    --chart-border: #d0d7de;
+    --chart-hover: #eaeef2;
+    --chart-text: #24292f;
+    --chart-muted: #57606a;
+    --chart-grid: #eaeef2;
+
+    /* calm teal/red — matches chart candle palette */
+    --bullish: #089981;
+    --bearish: #f23645;
+    --bullish-bg: rgba(8, 153, 129, 0.1);
+    --bearish-bg: rgba(242, 54, 69, 0.1);
+
+    --ind-sma: #2962ff;
+    --ind-ema: #ff9800;
+    --ind-bb: #9c27b0;
+    --ind-vwap: #00897b;
+    --ind-rsi: #9c27b0;
+    --ind-macd: #2962ff;
+    --ind-signal: #f23645;
+
+    --scrollbar-track: #f6f8fa;
+    --scrollbar-thumb: #d0d7de;
+
+    /* Dot-grid pattern — light mode */
+    --dot-grid-dot:  rgba(0, 0, 0, 0.10);
+    --dot-grid-size: 24px;
+}
+
+/* ── DARK MODE ── */
+.dark {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #1c2128;
+    --bg-hover: #21262d;
+
+    --border-color: #30363d;
+    --border-subtle: #21262d;
+
+    --text-primary: #e6edf3;
+    --text-secondary: #c9d1d9;
+    --text-muted: #8b949e;
+
+    --chart-bg: #0d1117;
+    --chart-surface: #161b22;
+    --chart-border: #21262d;
+    --chart-hover: #1c2128;
+    --chart-text: #c9d1d9;
+    --chart-muted: #8b949e;
+    --chart-grid: #21262d;
+
+    /* calm teal/red — matches chart candle palette */
+    --bullish: #26a69a;
+    --bearish: #ef5350;
+    --bullish-bg: rgba(38, 166, 154, 0.1);
+    --bearish-bg: rgba(239, 83, 80, 0.1);
+
+    --ind-sma: #2962ff;
+    --ind-ema: #ff9800;
+    --ind-bb: #ce93d8;
+    --ind-vwap: #00e676;
+    --ind-rsi: #ce93d8;
+    --ind-macd: #42a5f5;
+    --ind-signal: #ef9a9a;
+
+    --scrollbar-track: #0d1117;
+    --scrollbar-thumb: #30363d;
+
+    /* Dot-grid pattern — dark mode */
+    --dot-grid-dot:  rgba(255, 255, 255, 0.12);
+    --dot-grid-size: 24px;
+}
+
+
+
+/* ═══════════════════════════════════════════════
+   BASE STYLES pakai CSS variables
+   ═══════════════════════════════════════════════ */
+html,
+body,
+#__nuxt {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLLBAR pakai CSS variables
+   ═══════════════════════════════════════════════ */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* ═══════════════════════════════════════════════
+   UTILITY CLASSES pakai CSS variables
+   ═══════════════════════════════════════════════ */
+@layer components {
+
+    /* Panel / Card — dot-grid background */
+    .tt-panel {
+        background-color: var(--chart-bg);
+        background-image: radial-gradient(
+            circle,
+            var(--dot-grid-dot) 1.5px,
+            transparent 1.5px
+        );
+        background-size: var(--dot-grid-size) var(--dot-grid-size);
+        border: 1px solid var(--chart-border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    /* Widget wrapper body — same dot-grid as dashboard bg */
+    .widget-body {
+        background-image: radial-gradient(
+            circle,
+            var(--dot-grid-dot) 1.5px,
+            transparent 1.5px
+        );
+        background-size: var(--dot-grid-size) var(--dot-grid-size);
+    }
+
+    .tt-surface {
+        background-color: var(--chart-surface);
+        border-bottom: 1px solid var(--chart-border);
+    }
+
+    /* Text */
+    .tt-text-primary {
+        color: var(--text-primary);
+    }
+
+    .tt-text-secondary {
+        color: var(--text-secondary);
+    }
+
+    .tt-text-muted {
+        color: var(--text-muted);
+    }
+
+    .tt-text-bullish {
+        color: var(--bullish);
+    }
+
+    .tt-text-bearish {
+        color: var(--bearish);
+    }
+
+    /* Button base */
+    .tt-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 10px;
+        height: 28px;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-secondary);
+        color: var(--text-secondary);
+        font-size: 11px;
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.15s ease;
+    }
+
+    .tt-btn:hover {
+        background-color: var(--bg-hover);
+        color: var(--text-primary);
+    }
+
+    .tt-btn-active {
+        background-color: rgba(88, 166, 255, 0.15);
+        color: var(--ind-sma);
+        border-color: rgba(88, 166, 255, 0.4);
+    }
+
+    .tt-btn-danger {
+        color: var(--bearish);
+        border-color: var(--bearish-bg);
+        background-color: var(--bearish-bg);
+    }
+
+    /* Input */
+    .tt-input {
+        background-color: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        border-radius: 6px;
+        padding: 2px 8px;
+        height: 28px;
+        font-size: 11px;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.15s;
+    }
+
+    .tt-input:focus {
+        border-color: var(--ind-sma);
+    }
+
+    /* Badge */
+    .tt-badge-bull {
+        color: var(--bullish);
+        background-color: var(--bullish-bg);
+        font-size: 9px;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-weight: 700;
+    }
+
+    .tt-badge-bear {
+        color: var(--bearish);
+        background-color: var(--bearish-bg);
+        font-size: 9px;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-weight: 700;
+    }
+
+    .tt-badge-neut {
+        color: var(--text-muted);
+        background-color: var(--bg-tertiary);
+        font-size: 9px;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-weight: 700;
+    }
+
+    /* Widget drag handle — thin grab bar */
+    .tt-widget-header {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 0 6px;
+        height: 10px;
+        background-color: var(--chart-surface);
+        border-bottom: 1px solid var(--chart-border);
+        user-select: none;
+        flex-shrink: 0;
+    }
+
+    /* Separator */
+    .tt-sep {
+        width: 1px;
+        height: 16px;
+        background-color: var(--border-color);
+        flex-shrink: 0;
+    }
+}
+
+/* Hide lightweight-charts TradingView attribution */
+.tv-lightweight-charts a,
+.tv-lightweight-charts table a {
+    display: none !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   DOT-GRID BACKGROUND UTILITY
+   Applied to the scrollable wrapper behind the grid
+   ══════════════════════════════════════════════════════ */
+
+/* Primary dot-grid — used on the main dashboard wrapper */
+.dot-grid-bg {
+    background-color: var(--chart-bg);
+    background-image: radial-gradient(
+        circle,
+        var(--dot-grid-dot) 1.5px,
+        transparent 1.5px
+    );
+    background-size: var(--dot-grid-size) var(--dot-grid-size);
+}
+
+/* ═══════════════════════════════════════════════
+   GRID LAYOUT PLUS overrides
+   Library uses .vgl-layout / .vgl-item classes
+   ═══════════════════════════════════════════════ */
+
+/* GridLayout container: transparent so wrapper dot-grid shows through */
+.vgl-layout,
+.vue-grid-layout {
+    background: transparent !important;
+    --vgl-placeholder-bg: transparent;
+    --vgl-placeholder-opacity: 1;
+}
+
+/* GridItem: no transition for snappier feel */
+.vgl-item,
+.vue-grid-item {
+    transition: none !important;
+}
+
+/* ── Drag/resize placeholder: denser dot-grid + blue dashed border ── */
+.vgl-item--placeholder,
+.vue-grid-layout .vue-grid-item.vue-grid-placeholder,
+.vue-grid-item.vue-grid-placeholder,
+div.vue-grid-item.vue-grid-placeholder {
+    background-color: rgba(41, 98, 255, 0.07) !important;
+    background-image: radial-gradient(
+        circle,
+        rgba(88, 166, 255, 0.35) 1.5px,
+        transparent 1.5px
+    ) !important;
+    background-size: 16px 16px !important;
+    opacity: 1 !important;
+    border: 2px dashed var(--ind-sma) !important;
+    border-radius: 8px !important;
+    z-index: 2 !important;
+}
+
+/* ── Puzzle-like Resize Border Feedback ── */
+.vue-grid-item:not(.vue-grid-placeholder):hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 0l.2 7c0 0-1 .1-1.5.6s-.1 1.4.7 1.6c.8.3 1.3-.4 1.3-.4l-.2 10.8h-11s.2-.5-.3-.9s-1.2-.2-1.4.3c-.2.5.1 1 .4 1.2s1 .2 1 .2l-10.7-.1-.1-6.7s-.6-.2-.9.3c-.3.5-.1 1.2.4 1.4s1-.1 1.2-.4s.2-1 .2-1l10.8.1.1-10.8h11.2z' fill='rgba(88,166,255,0.25)'/%3E%3C/svg%3E");
+    background-size: 10px 10px;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 5;
+    border-radius: 0 8px 8px 0;
+}
+
+.vue-grid-item:not(.vue-grid-placeholder):hover::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 0l.2 7c0 0-1 .1-1.5.6s-.1 1.4.7 1.6c.8.3 1.3-.4 1.3-.4l-.2 10.8h-11s.2-.5-.3-.9s-1.2-.2-1.4.3c-.2.5.1 1 .4 1.2s1 .2 1 .2l-10.7-.1-.1-6.7s-.6-.2-.9.3c-.3.5-.1 1.2.4 1.4s1-.1 1.2-.4s.2-1 .2-1l10.8.1.1-10.8h11.2z' fill='rgba(88,166,255,0.25)'/%3E%3C/svg%3E");
+    background-size: 10px 10px;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 5;
+    border-radius: 0 0 8px 8px;
+}
+
+.vue-grid-item .vue-resizable-handle {
+    bottom: 3px !important;
+    right: 3px !important;
+    width: 14px !important;
+    height: 14px !important;
+    background-image: none !important;
+    border-right: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    border-radius: 0 0 4px 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 10 !important;
+    cursor: se-resize;
+}
+
+.vue-grid-item:hover .vue-resizable-handle {
+    opacity: 1;
+}
+
+/* Flash animation */
+@keyframes flash-up {
+    from {
+        background: rgba(63, 185, 80, 0.25);
+    }
+
+    to {
+        background: transparent;
+    }
+}
+
+@keyframes flash-down {
+    from {
+        background: rgba(248, 81, 73, 0.25);
+    }
+
+    to {
+        background: transparent;
+    }
+}
+
+.flash-up {
+    animation: flash-up 0.5s ease-out;
+}
+
+.flash-down {
+    animation: flash-down 0.5s ease-out;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — tablet & mobile overrides
+   ═══════════════════════════════════════════════ */
+
+/* Tablet (640–1023px): tighten button padding */
+@media (max-width: 1023px) {
+    .tt-btn {
+        padding: 2px 6px;
+        font-size: 10px;
+    }
+}
+
+/* Mobile (<640px): icon-only buttons, compact topbar */
+@media (max-width: 639px) {
+    .tt-btn {
+        padding: 2px 6px;
+        gap: 0;
+    }
+
+    /* Hide text nodes inside buttons, keep SVG icons */
+    .tt-btn span,
+    .tt-btn kbd {
+        display: none;
+    }
+
+    /* Symbol input narrower */
+    .tt-input.w-24 {
+        width: 4rem;
+    }
+
+    /* Page tabs scrollable on mobile */
+    .scrollbar-none {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Spin */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 0.8s linear infinite;
+}
