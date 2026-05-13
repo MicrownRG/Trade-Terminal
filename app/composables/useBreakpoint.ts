@@ -59,8 +59,9 @@ export function getGridMinH(width: number): number {
 }
 
 export function isTopbarButtonVisible(button: TopbarButton, width: number): boolean {
-  if (width >= 1024) return true       // desktop shows everything
-  // below 1024 (mobile/tablet): only lock, widget, theme visible
+  if (width >= 1024) return true           // desktop: semua tampil
+  if (width >= 640)  return button !== 'reset'  // tablet: hide reset only
+  // mobile (<640): hanya lock, widget, theme
   return button === 'lock' || button === 'widget' || button === 'theme'
 }
 

@@ -36,8 +36,5 @@
     "@vitest/ui": "^4.1.5",
     "happy-dom": "^20.9.0",
     "vitest": "^4.1.5"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-win32-x64-msvc": "^4.60.3"
   }
 }

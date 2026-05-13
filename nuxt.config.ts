@@ -39,8 +39,6 @@ export default defineNuxtConfig({
     },
     resolve: {
       alias: {
-        // Force CJS version of astring so @vibetrader/pinets default import works
-        'astring': 'astring/dist/astring.mjs',
       },
     },
     build: {
